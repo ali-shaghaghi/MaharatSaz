@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'mobile',
+        'image',
+        'status',
     ];
 
     /**
@@ -32,7 +37,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    
+    protected $casts = [
+        /* ... */
+        'role' => RoleEnum::class,
+    ];
     /**
      * Get the attributes that should be cast.
      *
